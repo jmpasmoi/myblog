@@ -1,4 +1,4 @@
-baseurl = ""
+baseurl = "https://jmcimula.netlify.com/"
 languageCode = "en-US"
 title = "Jean Marie Cimula"
 # Enable comments by entering your Disqus shortname
