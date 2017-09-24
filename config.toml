@@ -2,7 +2,7 @@ baseurl = "https://jmcimula.netlify.com/"
 languageCode = "en-US"
 title = "Jean Marie Cimula"
 # Enable comments by entering your Disqus shortname
-disqusShortname = "jmcimula"
+disqusShortname = "@rpubs-94524256dbe3bdaf24aee8a76dab419e"
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 theme = "hugo-sustain"
