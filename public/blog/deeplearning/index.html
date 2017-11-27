@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="map[]" />
+    <meta name="description" content="Personal website of Jean Marie Cimula."/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>Deep Learning for Dummies</title>
+    <meta name="generator" content="Hugo 0.26" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    <link rel="shortcut icon" href="/img/profile.png" type="favicon/ico" />
+	<link rel="icon" type="image/x-icon" href="/img/profile.png" >
+    <link rel="shortcut icon" type="image/x-icon" href="/img/profile.ico"/>
+	<link rel="icon" type="image/x-icon" href="/img/profile.ico" />  
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+		
+		<li><a href="/publication/">PUBLICATIONS</a></li>
+        
+        <li><a href="/projects/">PROJECTS</a></li>
+        
+        <li><a href="/cv/">RESUME</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="http://rpubs.com/jmcimula/passport" target="_blank">Deep Learning for Dummies</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          November 27, 2017
+            &nbsp;&nbsp;
+            
+            <span class="label label-success">Machine Learning</span>            
+            <span class="label label-success">Artificial Intelligence</span>            
+            <span class="label label-success">Natural Language Processing</span>
+     
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+
+<div id="deep-learning-techniques" class="section level3">
+<h3>Deep Learning Techniques</h3>
+<p>The learning algorithm can be supervised or unsupervised. The goal of any supervised learning algorithms is to build an artificial system that can learn the mapping between the input and the output, and can predict the output of the system given new inputs; and the goal of unsupervised learning is to build representations of the input that can be used for decision making, predicting future inputs, efficiently communicating the inputs to another machine, etc.</p>
+<ul>
+<li><p>Perceptron is a supervised learning algorithm; it is a linear classifier combining a set of weights with the feature vector. The appropriate weights are applied to the inputs, and the resulting weighted sum passed to a function that produces the output. This algorithm includes three steps: - (Step 1) initialization of the weights to zero or a small random value; - (Step 2) calculation of the weight and update of the weights; and - (Step 3) offline learning and repeat the step 2 as many possible until the error will be than the threshold.</p></li>
+<li><p>Kernel methods are a class of algorithms for pattern analysis in datasets performing a nonlinear mapping from raw data in high-dimensional space, where simple classifier can be used to handle the data. Algorithms that can be used with inner product information: - Ridge Regression - Fisher Discriminant - Principal Components Analysis - Canonical Correlation Analysis - Spectral Clustering - Support Vector Machines, etc. Kernel methods can work as follows: - (Step 1) Embedding data in a vector space and looking for linear relations in such space - (Step 2) If the map is chosen fitly, complex relations can be simplified, and easily detected.</p></li>
+<li><p>Backpropagation to train multilayer architectures. It replaces hand-engineering with trainable multilayer networks. Backpropagation (backward propagation of errors) algorithm is a method of training artificial neural networks looking for the local minimum of the error function in weight space using an optimization method such as gradient descent (the steepest direction). The solution to the learning problem arises from the merger of weights minimizing the error function. The algorithm can be decomposed in the following steps: - Feed-forward computation (graph whose nodes is computing units and whose directed edges transmit numerical information from node to node) - Backpropagation to the output layer - Backpropagation to the hidden layer - Weight updates. The goal is to increase or decrease the weight in order to make the error sufficiently smaller.</p></li>
+<li><p>Convolutional neural networks (ConNet or CNN). It is a type of feed-forward artificial neural network with a specialized connectivity structure - stack multiple stages of feature extractors - higher stages compute more global, more invariant features - classification layer at the end. This method was inspired by biological processes and are variations of multilayer perceptrons designed to use minimal amounts of preprocessing. Applications of ConNet are Image and Video recognition, recommender systems, NLP, etc.</p></li>
+</ul>
+<p><img src="data:image/png;base64,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" /> Let explain the ConNet seamlessly and make it easier for beginners (include me) referring to the Fig 1 a deep convolutional neural network for image classification.</p>
+<ol style="list-style-type: decimal">
+<li>Feed-forward feature extraction</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Convolve input with learned filters:</li>
+<li>Non-linearity: The ReLU (Rectified Linear Unit) is preferable compared to the function tanh (hyperbolic tangent) and sigmoid because it avoids saturation issues, simplifies the backpropagation and makes learning several times faster)</li>
+<li>Spatial pooling: it does the sum of max, it partitions the input image into a set of non-overlapping rectangles and, for each such sub-region, outputs the maximum.</li>
+<li>Normalization: number of feature maps times number of pixel positions across layers before or after spatial pooling.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>Supervised training of convolutional filters by back-propagating classification error</li>
+</ol>
+<ul>
+<li>Recurrent neural networks (RNN) Applications of RNN are unsegmented connected handwriting recognition and speech recognition. The RNN models can perform sequence recognition/reproduction or temporal association/prediction.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Elman and Jordan Networks: synchronous, fix recurrent weights, the training uses propagation</li>
+<li>Hopfield Networks: fully connected graph, asynchronous, fixed-points of dynamical system</li>
+<li>Liquid State Machines and Echo State Networks</li>
+<li>Fully recurrent network and Recursive neural networks</li>
+</ol>
+</div>
+<div id="dl-tools-by-programming-languages" class="section level3">
+<h3>DL tools by programming languages</h3>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.python.org/" target="_blank">Python</a>: Caffe, Theano, TensorFlow, Keras, Lasange, etc.</li>
+<li>C</li>
+<li><a href="https://www.java.com/" target="_blank">Java</a>: Encog, Deeplearning4j, etc.</li>
+<li><a href="https://isocpp.org/" target="_blank">C++</a>: eblearn, Intel® Deep Learning Framework, etc.</li>
+<li><a href="https://www.visualstudio.com/" target="_blank">C#</a>: CNTKSharp</li>
+<li><a href="https://www.r-project.org/" target="_blank">R</a>: h2o, darch, deepnet, TensorFlow, Keras, etc</li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript" target="_blank">JavaScript</a>: Convnet.js</li>
+<li>PHP</li>
+<li><a href="https://golang.org/" target="_blank">Go</a>: TensorFlow</li>
+<li><a href="https://developer.apple.com/swift/" target="_blank">Swift</a>: Swift-AI</li>
+</ol>
+</div>
+
+
+
+
+
+           <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        September 23, 2017
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/telecom/">Churn in Telecom Industry: brain teaser or plague?</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  
+  <script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+  
+  <script type="text/javascript">
+
+     (function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jmcimula.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/docs.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+    
+  </body>
+</html>
