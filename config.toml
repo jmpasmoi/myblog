@@ -21,7 +21,7 @@ theme = "hugo-sustain"
 
 [params.social]
   Github        = "jmcimula"
-  Email         = "jmkacim@gmail.com"
+  Email         = "jmcimula@gmail.com"
   Twitter       = "jmcimula"
   LinkedIn      = "jmcimula"
   Stackoverflow = ""
