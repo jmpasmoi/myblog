@@ -185,15 +185,6 @@ html, body {
 div.footer{
   border-bottom: 5px solid #27A822;;
 }
-
-div {
-    height:200px;
-    width:350px;
-}
-
-#justify {      
-    text-align: justify;
-}
 /* Set the fixed height of the footer here */
 /*.footer {
   height: 50px;
