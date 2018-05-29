@@ -1,0 +1,24 @@
+Educational IT Solutions Expo
+
+I recently attended the 9th Educational IT Solutions Expo (<a href="http://www.edix-expo.jp/en/" target="_blank">EDIX</a>) at <a href="http://www.bigsight.jp/english/" target="_blank">Tokyo Big Sight</a>. EDIX is the Japan’s largest industry trade show that group top IT companies and content and service providers who seek to spread out their business in the Japanese education field. The 2017 EDIX has hosted over 200 exhibitors to showcase their solutions.
+
+The 2018 EDIX was colorful with numerous booths where every exhibitor was thirsty to introduce his/her products and distribute his/her brochures. I could not go to all booths because of the size of the venue and the number of attendees. 
+
+I have visited many booths to collect brochures, but I only deeply talked with around ten exhibitors. As I have a fondness for the sense of beauty, I was solely interested in IT solutions with a strong business model and an ergonomic user interface capable of attracting children’s gaze.
+
+Below is the list of companies that impressed me most. <i>They look like good companies doing very meaningful work in my eyes. That’s it. Of course, they didn’t pay me to say good words</i> (<a href="https://yihui.name/en/2018/02/netlify-data-scientist/" target="_blank">Sentence from Dr. Yihui Xie’s post</a>, <a href=" https://www.rstudio.com/" target="_blank"> Software Engineer at RStudio</a>). 
+
+1.	Active Brains Co., Ltd.  (http://www.active-brains.co.jp/)
+They aim to realize a society in which children are interested in learning, feel that learning is fun, and can draw a dream through learning.
+2.	Gakken Educational Co., Ltd.
+3.	Kenis
+4.	Karada-Lab Co., Ltd.
+5.	Makeblock
+6.	zSpace https://jp.zspace.com/ 
+They create mixed reality systems that combine elements of virtual and augmented reality in a computer.
+7.	X
+8.	X
+9.	X
+10.	X
+11.	X
+12.	X
