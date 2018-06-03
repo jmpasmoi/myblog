@@ -1,0 +1,33 @@
+Last week I read a fantastic post written by Kyle Racki (https://twitter.com/kyleracki) titled “Why Kids Should Be Taught Entrepreneurship Early On” (https://www.proposify.com/blog/entrepreneurship-for-kids). I wanted to stand up in front of my computer and travel back in time to be taught this stuff when I was kid.
+I currently work on a project as part of the social contribution to introducing programming education in the elementary school by 2020. This post hi
+ 
+Numerous software have been developed to blablablabla
+ 
+Education Solutions: Design Thinking
+1.      KOOV (Sony)  https://www.koov.io/ & https://www.sony.jp/koov/ 
+2.      Makeblock http://www.makeblock.com/
+3.      Minecraft (Microsoft) https://en.wikipedia.org/wiki/Minecraft
+4.      Tech Kids School https://techkidsschool.jp/ 
+5.      Scratch (MIT Media Lab) https://scratch.mit.edu/
+6.      K3Tunnel https://k3tunnel.com/? 
+7.      Viscuit https://www.viscuit.com/
+8.      Embex-Education http://www.embex-edu.com/theme652.html 
+9.      https://leftbraincraftbrain.com/design-thinking-challenge-for-kids/
+10.   https://www.fastcompany.com/3057466/design-thinking-for-kids
+11.  https://www.fastcodesign.com/3053212/design-thinking-comes-to-kids-in-this-cute-board-game
+ 
+As stated in the previous post titled “Endless Frustration”, we cannot use this program to make kids what we want them to be, while they also view the future according to their vision. Better to do will be to build up a workflow that includes the possibility that each of them freely makes his/her career choice to pursuing later: researcher, entrepreneur or qualified professional. Bien mais il faut l’ameliorer
+ 
+How to teach Kids Problem-Solving Skills: Amy Morin: Give them skills to make good decisions: https://www.verywellfamily.com/teach-kids-problem-solving-skills-1095015 
+ 
+We should also care about other domains; programming is much more connected to CS and technical sciences. If by 2020 most kids find interesting this program they’ll develop more attachment to this science than others in the future, hence we may have the extinction of academic field in the country, while Japan’s population is dramatically shrinking. Japan has become a super-aged society with 27.7% of citizens older than 65 (https://www.japantimes.co.jp/news/2018/04/13/national/japans-population-shrinks-seventh-consecutive-year-falls-126-70-million/#.WvuKissUnZ4)  
+the census XXXXX shows that the population is declining and some predictions XXXX . Change sentence but keep prediction concept and include the percentage of younger population as per official census report.
+Add proof and ref                                 
+ 
+From Thinking to Programming
+ 
+Ici nous alons inclure le workflow en question
+ 
+Instead of Paradigm it’s better to use Approach
+
+Last week I read a fantastic post written by <a href="https://twitter.com/kyleracki" target="_blank">Kyle Racki</a> titled <a href="https://www.proposify.com/blog/entrepreneurship-for-kids" target="_blank">"Why Kids Should Be Taught Entrepreneurship Early On"</a>. I wanted to stand up in front of my computer and travel back in time to be taught this stuff when I was kid. 
