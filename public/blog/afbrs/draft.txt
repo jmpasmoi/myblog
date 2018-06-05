@@ -1,0 +1,3 @@
+#outline
+x := 1e4
+ft := quantverse(1/1:x)
