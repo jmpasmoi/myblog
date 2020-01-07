@@ -62,7 +62,7 @@
         </div>
         <div class="blog-title">
           <h4>
-          January 05, 2020
+          Posted January 05, 2020, slightly revised January 07, 2020
             &nbsp;&nbsp;
            
             <span class="label label-success">QA</span>            
@@ -79,22 +79,33 @@
 
 <pre class="python"><code>
 from transformers import pipeline
+from bs4 import BeautifulSoup
+import requests
+import re
 
-#https://en.wikipedia.org/wiki/Kinshasa
-context="Kinshasa, formerly Leopoldville (Dutch: Leopoldstad), is the capital and the largest city of the Democratic Republic of the Congo. The city is situated alongside the Congo River. Once a site of fishing and trading villages, Kinshasa is now a megacity with an estimated population of more than 11 million. It faces Brazzaville, the capital of the neighbouring Republic of the Congo, which can be seen in the distance across the wide Congo River, making them the world's second-closest pair of capital cities after Rome and Vatican City. The city of Kinshasa is also one of the DRC's 26 provinces. Because the administrative boundaries of the city-province cover a vast area, over 90 percent of the city-province's land is rural in nature, and the urban area occupies a small but expanding section on the western side. Kinshasa is Africa's third-largest urban area after Cairo and Lagos. It is also the world's largest Francophone urban area (surpassing Paris in population), with French being the language of government, schools, newspapers, public services, and high-end commerce in the city, while Lingala is used as a lingua franca in the street. Kinshasa hosted the 14th Francophonie Summit in October 2012"
+wiki_data = requests.get("https://en.wikipedia.org/wiki/Kinshasa").text
+soup = BeautifulSoup(wiki_data, 'lxml')
+
+context = []
+for k in soup.select('p'):
+  context.append(re.sub("[\(\[].*?[\)\]]", "", k.getText())) # append and remove citation in text, e.g. [1]
+
+context = ''.join([s for s in context if isinstance(s,str)])
+spchar_list = ['\n', '/', '\\', '[', ']']
+context = context.translate({ord(x): '' for x in spchar_list})
+context = context.replace(".", ". ")
 
 nlp = pipeline('question-answering')
 
-nlp(context=context, question="What is the population of Kinshasa?").get('answer')
-nlp(context=context, question="How many provinces does the DRC have?").get('answer')
-nlp(context=context, question="Where is Kinshasa situated in the DRC?").get('answer')
-nlp(context=context, question="When did the 14th Francophone Summit take place?").get('answer')
-nlp(context=context, question="What is the closest city to Kinshasa?").get('answer')
-nlp(context=context, question="What is the Francophone urban area that surpasses Paris in population?").get('answer')
-nlp(context=context, question="What are the largest urban areas in Africa?").get('answer')
+print(nlp(context=context, question="What is the population of Kinshasa?").get('answer'))
+print(nlp(context=context, question="How many provinces does the DRC have?").get('answer'))
+print(nlp(context=context, question="Where is Kinshasa situated in the DRC?").get('answer'))
+print(nlp(context=context, question="When did the 14th Francophone Summit take place?").get('answer'))
+print(nlp(context=context, question="What is the closest city to Kinshasa?").get('answer'))
+print(nlp(context=context, question="What is the Francophone urban area that surpasses Paris in population?").get('answer'))
+print(nlp(context=context, question="What are the largest urban areas in Africa?").get('answer'))
 
 </code></pre>
-
 		  <img src="qa.png" alt="QA results" width="743">
 
            <hr>
