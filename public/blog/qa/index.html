@@ -88,7 +88,8 @@ soup = BeautifulSoup(wiki_data, 'lxml')
 
 context = []
 for k in soup.select('p'):
-  context.append(re.sub("[\(\[].*?[\)\]]", "", k.getText())) # append and remove citation in text, e.g. [1]
+  #append and remove citation in text, e.g. [1]
+  context.append(re.sub("[\(\[].*?[\)\]]", "", k.getText())) 
 
 context = ''.join([s for s in context if isinstance(s,str)])
 spchar_list = ['\n', '/', '\\', '[', ']']
