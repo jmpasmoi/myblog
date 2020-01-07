@@ -76,7 +76,7 @@
           <div class="panel-body">
 		  
 <p style="font-size:20px" align="justify">Fascinated by how easy it is to create a QA pipeline using HuggingFace's transformers.</p>
-<p style="font-size:20px" align="justify">You can extend it and use your own questions. Go, have fun, enjoy yourself! Feel free to contact me if you have any questions</p>
+<p style="font-size:20px" align="justify">You can extend it and use your own questions. Go, have fun, enjoy yourself! Feel free to contact me if you have any questions.</p>
 <pre class="python"><code>
 from transformers import pipeline
 from bs4 import BeautifulSoup
@@ -98,13 +98,13 @@ context = context.replace(".", ". ")
 
 nlp = pipeline('question-answering')
 
-print(nlp(context=context, question="What is the population of Kinshasa?").get('answer'))
-print(nlp(context=context, question="How many provinces does the DRC have?").get('answer'))
-print(nlp(context=context, question="Where is Kinshasa situated in the DRC?").get('answer'))
-print(nlp(context=context, question="When did the 14th Francophone Summit take place?").get('answer'))
-print(nlp(context=context, question="What is the closest city to Kinshasa?").get('answer'))
-print(nlp(context=context, question="What is the Francophone urban area that surpasses Paris in population?").get('answer'))
-print(nlp(context=context, question="What are the largest urban areas in Africa?").get('answer'))
+print(nlp(context=context,question="What is the population of Kinshasa?").get('answer'))
+print(nlp(context=context,question="How many provinces does the DRC have?").get('answer'))
+print(nlp(context=context,question="Where is Kinshasa situated in the DRC?").get('answer'))
+print(nlp(context=context,question="When did the 14th Francophone Summit take place?").get('answer'))
+print(nlp(context=context,question="What is the closest city to Kinshasa?").get('answer'))
+print(nlp(context=context,question="What is the Francophone urban area that surpasses Paris in population?").get('answer'))
+print(nlp(context=context,question="What are the largest urban areas in Africa?").get('answer'))
 
 </code></pre>
 		  <img src="qa.png" alt="QA results" width="743">
