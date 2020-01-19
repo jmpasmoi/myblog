@@ -73,9 +73,11 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
-		  
+<!--[if lt IE 9]>		  
 <p style="font-size:20px" align="justify">Fascinated by how easy it is to create a QA pipeline using HuggingFace's transformers.</p>
 <p style="font-size:20px" align="justify">You can extend it and use your own questions. Go, have fun, enjoy yourself! Feel free to contact me if you have any questions.</p>
+<![endif]-->
+		  
 <pre class="r"><code>
 library(tidyverse)
 library(magrittr)
@@ -95,8 +97,9 @@ gl_auth("nlp_auth_file.json")  #Personal Information
 
 #Some famous Congolese Twitter accounts
 #This list is not exhaustive :D :D, you can extend it. :P
-few_accounts=c("TopCongo","actualitecd","soniarolley","juantedbelkas","sethkikuni","rkitsita","BillyKambale1","PatrickMuyaya", 
-               "actualitecd", "politicocd", "luchaRDC", "CASINFO_RDC", "StanysBujakera", "Bibishe6")
+few_accounts=c("TopCongo","actualitecd","soniarolley","juantedbelkas","sethkikuni","rkitsita",
+               "BillyKambale1","PatrickMuyaya", "actualitecd", "politicocd", "luchaRDC",
+	       "CASINFO_RDC", "StanysBujakera", "Bibishe6")
 rt <- search_tweets(few_accounts,retryonratelimit=TRUE)
 pt <- rt%>%mutate(tags=str_sub(mentions_screen_name,2,1e4))%>%select(tags)
 
@@ -119,11 +122,16 @@ mflws <- get_followers("jmcimula")%>%
                      select(screen_name, text, created_at)%>%
                      arrange(desc(created_at)) %>%
                      head(n=5) %>% #five latest tweets, including retweets
-                     mutate(cl_mention=check_tags(text), #Mention-based Classification
-                            text_trans=ifelse(detect_language(text)=="en", text, gl_translate(text,target="en")$translatedText),
-                            text_trans=tm_map(text_trans,removeNumbers, removePunctuation, stopwords(kind="en")),
-                            cl_nlp=monkey_classify(text_trans,classifier_id=cim_id,verbose=TRUE)$label #NLP-based Classification. This has been trained beforehand on Monkeylearn
-                            #,user=anonymize(screen_name , .algo="crc32")
+                     mutate(
+		        cl_mention=check_tags(text), #Mention-based Classification
+                        text_trans=ifelse(detect_language(text)=="en", text, 
+			                     gl_translate(text,target="en")$translatedText),
+                        text_trans=tm_map(text_trans,removeNumbers, removePunctuation,
+			                     stopwords(kind="en")),
+                        cl_nlp=monkey_classify(text_trans,classifier_id=cim_id,
+			                      verbose=TRUE)$label 
+					      #NLP-based Classification. This has been trained beforehand on Monkeylearn
+                        #,user=anonymize(screen_name , .algo="crc32")
                      )%>% gather(key="Class", value="Interest", cl_mention, cl_nlp)%>%
                     filter(cl_mention==cl_nlp)
 #Bye bye! :D 
