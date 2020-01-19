@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="map[]" />
+    <meta name="description" content="Personal website of Jean Marie Cimula."/>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>Auto Unfollow Feature</title>
+    <meta name="generator" content="Hugo 0.26" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    <link rel="shortcut icon" href="/img/profile.png" type="favicon/ico" />
+	<link rel="icon" type="image/x-icon" href="/img/profile.png" >
+    <link rel="shortcut icon" type="image/x-icon" href="/img/profile.ico"/>
+	<link rel="icon" type="image/x-icon" href="/img/profile.ico" />  
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+		
+		<li><a href="/publication/">PUBLICATIONS</a></li>
+        
+        
+        
+        <li><a href="/cv/">RESUME</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong>Auto Unfollow Feature</strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+            January 19, 2020
+           
+            <span class="label label-success">Unfollow</span>            
+            <span class="label label-success">Twitter</span>            
+            <span class="label label-success">Followers</span>
+			<span class="label label-success">R</span>
+     
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+		  
+<p style="font-size:20px" align="justify">Fascinated by how easy it is to create a QA pipeline using HuggingFace's transformers.</p>
+<p style="font-size:20px" align="justify">You can extend it and use your own questions. Go, have fun, enjoy yourself! Feel free to contact me if you have any questions.</p>
+<pre class="r"><code>
+library(tidyverse)
+library(magrittr)
+library(rtweet)
+library(monkeylearn) #https://ropensci.org/tutorials/monkeylearn_tutorial/
+#install.packages("devtools")
+#devtools::install_github("ropensci/googleLanguageR")
+library(googleLanguageR)
+#devtools::install_github("ropensci/cld3")
+library(cld3) #cld3 is a neural network model for language identification.
+#library(anonymizer)
+library(tm)
+source("token_monkeylearn.cc") #Personal Information
+source("token_twitter.cc")     #Personal Information
+require("travis.yml")
+gl_auth("nlp_auth_file.json")  #Personal Information
+
+#Some famous Congolese Twitter accounts
+#This list is not exhaustive :D :D, you can extend it. :P
+few_accounts=c("TopCongo","actualitecd","soniarolley","juantedbelkas","sethkikuni","rkitsita","BillyKambale1","PatrickMuyaya", 
+               "actualitecd", "politicocd", "luchaRDC", "CASINFO_RDC", "StanysBujakera", "Bibishe6")
+rt <- search_tweets(few_accounts,retryonratelimit=TRUE)
+pt <- rt%>%mutate(tags=str_sub(mentions_screen_name,2,1e4))%>%select(tags)
+
+data.frame(tags=unlist(strsplit(pt$tags,",")))%>%
+     mutate(tags=str_replace_all(tags,"[[:punct:]]",""))%>%
+     count(tags)%>%
+     filter(n>5)%>% #nb of mentions
+     as_tibble() -> df
+
+check_tags <- function(x){ 
+    k<-0;map(str_detect(x,df$tags),TRUE);~k++
+    ifelse(k!=0,"Politics","Divers")}
+
+mflws <- get_followers("jmcimula")%>%
+                     lookup_users(as_userid(user_id))%>%
+                     filter(geo_coords==lookup_coords("cd"))%>% #followers from DR Congo
+                     #sample_n(20) %>% #observation
+                     get_timelines()%>%
+                     mutate(week(created_at)==week(Sys.Date()))%>%
+                     select(screen_name, text, created_at)%>%
+                     arrange(desc(created_at)) %>%
+                     head(n=5) %>% #five latest tweets, including retweets
+                     mutate(cl_mention=check_tags(text), #Mention-based Classification
+                            text_trans=ifelse(detect_language(text)=="en", text, gl_translate(text,target="en")$translatedText),
+                            text_trans=tm_map(text_trans,removeNumbers, removePunctuation, stopwords(kind="en")),
+                            cl_nlp=monkey_classify(text_trans,classifier_id=cim_id,verbose=TRUE)$label #NLP-based Classification. This has been trained beforehand on Monkeylearn
+                            #,user=anonymize(screen_name , .algo="crc32")
+                     )%>% gather(key="Class", value="Interest", cl_mention, cl_nlp)%>%
+                    filter(cl_mention==cl_nlp)
+#Bye bye! :D 
+post_unfollow_user(nflws$screen_name)
+</code></pre>
+		  <img src="qa.png" alt="QA results" width="743">
+
+           <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+                  <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <h6 style="text-align: right">
+                        January 05, 2020
+                      </h6>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8">
+                      <h6 style="text-align: left">
+                        <strong><a href="/blog/qa/">My First QA</a></strong>
+                      </h6>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  
+  <script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+  
+  <script type="text/javascript">
+
+     (function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jmcimula.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/docs.min.js"></script>
+<script src="/js/main.js"></script>
+
+<script src="/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+    
+  </body>
+</html>
