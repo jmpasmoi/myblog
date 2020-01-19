@@ -130,7 +130,8 @@ mflws <- get_followers("jmcimula")%>%
 			                     stopwords(kind="en")),
                         cl_nlp=monkey_classify(text_trans,classifier_id=cim_id,
 			                      verbose=TRUE)$label 
-					      #NLP-based Classification. This has been trained beforehand on Monkeylearn
+					      #NLP-based Classification. 
+					      #This has been trained beforehand on Monkeylearn
                         #,user=anonymize(screen_name , .algo="crc32")
                      )%>% gather(key="Class", value="Interest", cl_mention, cl_nlp)%>%
                     filter(cl_mention==cl_nlp)
