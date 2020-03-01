@@ -98,9 +98,9 @@ context = context.replace(".", ". ")
 
 nlp = pipeline('question-answering')
 
-print(nlp(context=context,question="What is the population of Kinshasa?").get('answer'))
+print(nlp(context=context,question="What is the most recent estimate population of Kinshasa?").get('answer'))
 print(nlp(context=context,question="How many provinces does the DRC have?").get('answer'))
-print(nlp(context=context,question="Where is Kinshasa situated in the DRC?").get('answer'))
+print(nlp(context=context,question="Where is the city of Kinshasa situated in the Democratic Republic of the Congo?").get('answer'))
 print(nlp(context=context,question="When did the 14th Francophone Summit take place?").get('answer'))
 print(nlp(context=context,question="What is the closest city to Kinshasa?").get('answer'))
 print(nlp(context=context,question="What is the Francophone urban area that surpasses Paris in population?").get('answer'))
