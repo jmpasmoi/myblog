@@ -76,7 +76,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
 		  
-<p style="font-size:20px" align="justify"> <a href="https://arxiv.org/pdf/1910.13461.pdf" target="_blank">BART</a> is one of the pre-training methods for conditional generation applications.</p>
+<p style="font-size:20px" align="justify"> <a href="https://arxiv.org/abs/1910.13461" target="_blank">BART</a> and <a href="https://arxiv.org/abs/1910.10683" target="_blank">T5</a> are pre-training methods for conditional generation applications like summarization.</p>
 <p style="font-size:20px" align="justify"> </p>
 <pre class="python"><code>
 from transformers import pipeline
@@ -98,12 +98,20 @@ data = data.translate({ord(x): '' for x in spchar_list})
 data = data.replace(".", ". ")
 
 
-summary = pipeline(task="summarization")
-sm = summary(data, max_length=150)
-print(sm[0]['summary_text'])
+smr_bart = pipeline(task="summarization") #BART is the default model for this pipeline.
+smbart = smr_bart(data, max_length=150)
+print(smbart[0]['summary_text'])
 
 => """
 Kinshasa is the capital and largest city of the Democratic Republic of the Congo. It is Africa's third-largest urban area after Cairo and Lagos. The city was colonized as a trading post by Henry Morton Stanley in 1881. The indigenous people of the area include the Humbu  and Teke.
+"""
+
+smr_t5 = pipeline(task="summarization", model="t5-large", framework="tf")
+smt5 = smr_t5(data, max_length=150)
+print(smt5[0]['summary_text'])
+
+=> """
+Kinshasa is africa's third-largest urban area after Cairo and Lagos . the city was colonized as a trading post by Henry morton Stanley in 1881 . it was named Léopoldville in honour of king leopd II of the belgians .
 """
 </code></pre>
 
