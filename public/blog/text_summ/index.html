@@ -76,7 +76,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
 <p style="font-size:20px" align="justify"> I use the HuggingFace transformers pipeline to summarize a Wikipedia page, and the results are mind-blowing. This pipeline uses models that have been fine-tuned on a summarization task, namely 'bart-large-cnn' and 't5-large'</p>		  
-<p style="font-size:20px" align="justify"> <a href="https://arxiv.org/abs/1910.13461" target="_blank">BART</a> and <a href="https://arxiv.org/abs/1910.10683" target="_blank">T5</a> are pre-training methods for conditional generation tasks like summarization.</p>
+<p style="font-size:20px" align="justify"> <a href="https://arxiv.org/abs/1910.13461" target="_blank">BART</a> and <a href="https://arxiv.org/abs/1910.10683" target="_blank">T5</a> are pre-training methods for conditional generation tasks like summarization. It should be noted that the max length of the sequence to be generated is set to 150.</p>
 <pre class="python"><code>
 from transformers import pipeline
 from bs4 import BeautifulSoup
