@@ -101,7 +101,7 @@ smr_bart = pipeline(task="summarization") #BART is the default model for this pi
 smbart = smr_bart(data, max_length=150)
 print(smbart[0]['summary_text'])
 
-#> """
+=> """
 Coronaviruses are enveloped viruses with a positive-sense single-stranded RNA genome and a nucleocapsid of helical symmetry. The name coronavirus is derived from the Latin corona, meaning "crown" or "halo", which refers to the characteristic appearance reminiscent of a crown or a solar corona around the virions. In humans, coronavirus cause respiratory tract infections that can be mild, such as some cases of the common cold. In chickens, they cause an upper respiratory tract disease, while in cows and pigs they cause diarrhea.
 """
 
@@ -109,7 +109,7 @@ smr_t5 = pipeline(task="summarization", model="t5-large", framework="tf")
 smt5 = smr_t5(data, max_length=150)
 print(smt5[0]['summary_text'])
 
-#> """
+=> """
 coronaviruses are a group of related viruses that cause diseases in mammals and birds . they are enveloped viruses with a positive-sense single-stranded RNA genome . there are yet to be vaccines or antiviral drugs to prevent or treat infections .
 """
 </code></pre>
