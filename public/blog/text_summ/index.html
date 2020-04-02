@@ -97,7 +97,7 @@ data = data.translate({ord(x): '' for x in spchar_list})
 data = data.replace(".", ". ")
 
 
-smr_bart = pipeline(task="summarization") #BART is the default model for this task.
+smr_bart = pipeline(task="summarization", model="bart-large-cnn")
 smbart = smr_bart(data, max_length=150)
 print(smbart[0]['summary_text'])
 
