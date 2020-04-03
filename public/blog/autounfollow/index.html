@@ -108,7 +108,7 @@ data.frame(tags=unlist(strsplit(pt$tags,",")))%>%
      as_tibble() -> df
 
 check_tags <- function(x){ 
-    k<-0;map(str_detect(x,df$tags),TRUE);~k++
+    k<- 0;map(str_detect(x,df$tags),TRUE);~k++
     ifelse(k!=0,"Politics","Divers")}
 
 mflws <- get_followers("jmcimula")%>%
