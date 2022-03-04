@@ -43,10 +43,4 @@ theme = "hugo-sustain"
   weight = 300
   url = "https://www.dropbox.com/s/wuzioohpwiuewes/cv-blog.pdf?dl=0"
   
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
+
