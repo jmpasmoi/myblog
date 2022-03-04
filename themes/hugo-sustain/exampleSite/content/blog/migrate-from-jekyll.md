@@ -1,9 +1,10 @@
----
-date: 2014-03-10
-linktitle: Migrating from Jekyll
-title: Migrate to Hugo from Jekyll
-highlight: "true"
----
++++
+title = "Migrate from Jekyll"
+tags = ["ipsum"]
+categories = ["lorem"]
+banner = "img/banners/banner-5.jpg"
+twitter_author = "jekyllrb"
++++
 
 ## Move static content to `static`
 Jekyll has a rule that any directory not starting with `_` will be copied as-is to the `_site` output. Hugo keeps all static content under `static`. You should therefore move it all there.
@@ -55,7 +56,6 @@ As an example, I was using a custom [`image_tag`](https://github.com/alexandre-n
 
 Jekyll's plugin:
 
-```ruby
     module Jekyll
       class ImageTag < Liquid::Tag
         @url = nil
@@ -109,7 +109,6 @@ Jekyll's plugin:
       end
     end
     Liquid::Template.register_tag('image', Jekyll::ImageTag)
-```
 
 is written as this Hugo shortcode:
 
